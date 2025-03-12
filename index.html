@@ -94,7 +94,7 @@
         document.getElementById('contact-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             let formData = new FormData(e.target);
-            let response = await fetch('/api/contact', {
+            let response = await fetch('https://your-api-endpoint/contact', {
                 method: 'POST',
                 body: JSON.stringify(Object.fromEntries(formData)),
                 headers: { 'Content-Type': 'application/json' }
@@ -102,7 +102,7 @@
             alert(await response.text());
         });
         async function loadProjects() {
-            let response = await fetch('/api/projects');
+            let response = await fetch('https://your-api-endpoint/projects');
             let projects = await response.json();
             document.getElementById('project-list').innerHTML = projects.map(proj => `<div><h3>${proj.name}</h3><p>${proj.description}</p></div>`).join('');
         }
